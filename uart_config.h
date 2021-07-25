@@ -18,9 +18,9 @@
 #include <math.h>
 
 void UART2_INIT(void);
-void putchar(uint32_t moduleInstance, uint8_t charac);
-void putstr (uint32_t moduleInstance, unsigned char *send_buf);
-void puth   (uint32_t moduleInstance, unsigned n);
+void uart_char(uint32_t moduleInstance, uint8_t charac);
+void uart_str (uint32_t moduleInstance, unsigned char *send_buf);
+void uart_hex (uint32_t moduleInstance, unsigned n);
 
 void UART_RX(void);
 void UART_TX(void);

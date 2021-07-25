@@ -14,6 +14,7 @@
  *      @details    All functions are preceded by the dmp_ prefix to
  *                  differentiate among MPL and general driver function calls.
  */
+#include "usr.h"
 #include <eMPL/dmpKey.h>
 #include <eMPL/dmpmap.h>
 #include <eMPL/inv_mpu.h>
@@ -65,11 +66,11 @@
 
 
 #elif defined MOTION_DRIVER_TARGET_MSP432
-#include <msp432_Clock.h>
-#include "driverlib.h"
+#include "delay.h"
+#include "MSP432P4xx/driverlib.h"
 /*definition of msp432 driver functions*/
 #define delay_ms delay_ms
-#define get_ms   get_timestamp
+#define get_ms   get_ms
 
 #define log_i(...)  do{} while(0)
 #define log_e(...)  do{} while(0)

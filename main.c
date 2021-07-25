@@ -18,7 +18,8 @@ void main(void){
     /***MUST HAVE!!!***/
     clocks_init();
 
-    delay_init_us();
+    //delay_init_us(); //only for delay
+    setup_timer(); //for delay and get_ms
 
     OLED_Init();
     OLED_Clear();
@@ -31,13 +32,8 @@ void main(void){
     int num = 0;
 
     while(1){
-        KeyValue=0;
-        KeyValue=KEY_Scaning();
-        if(KeyValue>0){
-            char showing = (char)('0'+KeyValue);
-            //delay_ms(100);
-            OLED_Clear();
-            OLED_ShowChar(0,0,showing,size);
-        }
+            OLED_ShowNum(0,0,num,1,size);
+            num++;
+            delay_ms(1000);
     }
 }

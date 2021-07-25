@@ -70,27 +70,27 @@ void mclk_48M(){
 }
 
 void systick_1us(){
-    //set the corresponding MCLK freq
-    mclk_48M();
-
-    //enable systick
-    MAP_SysTick_enableModule();
-    //SysTick counter and must be between 1 and 16,777,216, inclusive.
-    SysTick_setPeriod(48);//counter value = t*clk
+//    //set the corresponding MCLK freq
+//    mclk_48M();
+//
+//    //enable systick
+//    MAP_SysTick_enableModule();
+//    //SysTick counter and must be between 1 and 16,777,216, inclusive.
+//    SysTick_setPeriod(48);//counter value = t*clk
 }
 
 void systick_interrupt(){
-    MAP_Interrupt_enableSleepOnIsrExit();
-    MAP_SysTick_enableInterrupt();
-
-    /* Enabling MASTER interrupts */
-    MAP_Interrupt_enableMaster();
+//    MAP_Interrupt_enableSleepOnIsrExit();
+//    MAP_SysTick_enableInterrupt();
+//
+//    /* Enabling MASTER interrupts */
+//    MAP_Interrupt_enableMaster();
 }
 
 
-void SysTick_Handler(){
-
-}
+//void SysTick_Handler(){
+//
+//}
 
 //config the clocks for MCLK:48M; SMCLK:24M; ACLK:128k; HSMCLK: 48M
 void clocks_init(){

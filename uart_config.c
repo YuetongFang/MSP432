@@ -51,12 +51,12 @@ void UART2_INIT(void){
 }
 
 
-void putchar(uint32_t moduleInstance, uint8_t charac){
+void uart_char(uint32_t moduleInstance, uint8_t charac){
     MAP_UART_transmitData(moduleInstance, charac);
     while (!MAP_UART_getInterruptStatus(moduleInstance,EUSCI_A_UART_TRANSMIT_INTERRUPT_FLAG));
 }
 
-void putstr(uint32_t moduleInstance, unsigned char *send_buf){
+void uart_str(uint32_t moduleInstance, unsigned char *send_buf){
     while(*send_buf){
         MAP_UART_transmitData(moduleInstance, (*send_buf));
         while (!MAP_UART_getInterruptStatus(moduleInstance,EUSCI_A_UART_TRANSMIT_INTERRUPT_FLAG));
@@ -66,10 +66,10 @@ void putstr(uint32_t moduleInstance, unsigned char *send_buf){
     MAP_UART_transmitData(moduleInstance, '\r');
 }
 
-void puth(uint32_t moduleInstance, unsigned n) {
+void uart_hex(uint32_t moduleInstance, unsigned n) {
     static const char hex[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
             '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-    putchar(moduleInstance, hex[n & 15]);
+    uart_char(moduleInstance, hex[n & 15]);
 }
 
 void uart_printf(uint32_t moduleInstance, char *fmt, ...){
@@ -77,8 +77,8 @@ void uart_printf(uint32_t moduleInstance, char *fmt, ...){
   va_list   uart0_ap;            //Define a va_list-type variable, which is a pointer to a parameter
   va_start (uart0_ap, fmt);      //Initialize the variables
   vsnprintf(uart0_pString, 100, fmt, uart0_ap);
-  putstr(moduleInstance, uart0_pString);
-  va_end(uart0_ap);              //END
+  uart_str (moduleInstance, uart0_pString);
+  va_end   (uart0_ap);              //END
 }
 
 //******************************************************************************
@@ -100,7 +100,7 @@ void EUSCIA2_IRQHandler(void){
 
 void UART_RX(void){
     receivedData = MAP_UART_receiveData(EUSCI_A2_BASE);
-    putstr(EUSCI_A2_BASE, "received");
+    uart_str(EUSCI_A2_BASE, "received");
 }
 void UART_TX(void){
 

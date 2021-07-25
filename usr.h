@@ -13,6 +13,10 @@
 #include "MSP432P4xx/driverlib.h"
 //#include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
+//for DMP_MPU6050
+#define MOTION_DRIVER_TARGET_MSP432
+#define MPU6050
+
 
 //for all the pin definitions and configurations
 #include "gpio_config.h"

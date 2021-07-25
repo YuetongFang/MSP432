@@ -42,6 +42,7 @@ struct int_param_s {
     void (*cb)(void);
     unsigned short pin;
     unsigned char lp_exit;
+    unsigned char active_low;
 #endif
 };
 

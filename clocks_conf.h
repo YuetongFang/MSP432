@@ -16,6 +16,6 @@ void mclk_48M();
 void clocks_init();
 void systick_1us();
 void systick_interrupt();
-void SysTick_Handler();
+//void SysTick_Handler();
 
 #endif /* CLOCKS_CONF_H_ */

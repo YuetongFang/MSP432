@@ -19,6 +19,8 @@ void delay_1us();
 void delay_us(uint32_t nus);
 void delay_1ms();
 void delay_ms(uint32_t nms);
-
+void setup_timer(void);
+int  get_ms(unsigned long *count);
+void SysTick_Handler(void);
 
 #endif /* DELAY_H_ */
