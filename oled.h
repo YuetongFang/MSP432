@@ -9,8 +9,18 @@
 #define OLED_H_
 
 #include "MSP432P4xx/driverlib.h"
-#include "gpio_config.h"
 #include "msp.h"
+
+/*****OLED******
+ * P4.2 -- SCL
+ * P4.1 -- SDA
+ **************/
+#define OLED_GPIO_CONFIG()  P4DIR |=  BIT1+BIT2
+#define OLED_SCLK_Clr()     P4OUT &=~ BIT2  //SCL
+#define OLED_SCLK_Set()     P4OUT |=  BIT2
+
+#define OLED_SDIN_Clr()     P4OUT &=~ BIT1  //SDA
+#define OLED_SDIN_Set()     P4OUT |=  BIT1
 
 #define OLED_MODE   0
 #define SIZE        8

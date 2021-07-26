@@ -11,6 +11,11 @@
 #include "MSP432P4xx/driverlib.h"
 #include "delay.h"
 
+/*****IIC******
+ * P6.4 -- SCL
+ * P6.5 -- SDA
+ **************/
+
 /**
  *  @brief  Set up the I2C port and configure the MSP430 as the master.
  *  @return 0 if successful.
