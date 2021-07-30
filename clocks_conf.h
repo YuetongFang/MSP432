@@ -9,7 +9,13 @@
 #define CLOCKS_CONF_H_
 
 #include "MSP432P4xx/driverlib.h"
-#include "msp.h"
+
+/*****CLOCKs******
+ * PJ.3 -- HFXTIN
+ * PJ.2 -- HFXTOUT
+ * PJ.0 -- LFXIN
+ * PJ.1 -- LFXOUT
+ **************/
 
 
 void mclk_48M();

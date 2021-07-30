@@ -10,12 +10,18 @@
 #define UART_CONFIG_H_
 
 #include "MSP432P4xx/driverlib.h"
+#include <stdio.h>
 #include <stdint.h>
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+
+/*****UART******
+ * P3.2 -- RX
+ * P3.3 -- TX
+ **************/
 
 void UART2_INIT(void);
 void uart_char(uint32_t moduleInstance, uint8_t charac);

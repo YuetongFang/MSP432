@@ -95,28 +95,6 @@ void setup_timer(void) {
 }
 
 int get_ms(unsigned long *count){
-    if(!count){
-        return 1;
-    }
-    *count = counter.timestamp;
-    return 0;
+
 }
 
-void SysTick_Handler(void){
-    // MAP_Interrupt_disableMaster();
-     counter.timestamp++;
-     if(counter.timer_remaining_ms){
-         counter.timer_remaining_ms--;
-      /*   check for the remain delay and go sleep*/
-         if(counter.timer_remaining_ms == 0){
-             counter.enable_Delay = 0;
-             MAP_Interrupt_disableSleepOnIsrExit();
-         }
-     }
-     if(counter.enable_Delay == 1)
-         MAP_Interrupt_enableSleepOnIsrExit();
-     else
-         MAP_Interrupt_disableSleepOnIsrExit();
-
-    // MAP_Interrupt_enableMaster();
-}

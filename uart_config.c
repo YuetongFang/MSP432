@@ -5,26 +5,10 @@
  *      Author: FYT
  */
 #include "uart_config.h"
+#include "interrupt_config.h"
 
 //definitions for data_recv
 uint8_t receivedData = 0x00;
-
-static const unsigned long dv[] = {
-//  4294967295      // 32 bit unsigned max
-        1000000000, // +0
-        100000000, // +1
-        10000000, // +2
-//  8388607         // 24 bit unsigned max
-        1000000, // +3
-        100000, // +4
-//  65535           // 16 bit unsigned max
-        10000, // +5
-        1000, // +6
-//  255             // 8 bit unsigned max
-        100, // +7
-        10, // +8
-        1, // +9
-};
 
 /*uses SMCLK:24MHz for Baud:115200*/
 void UART2_INIT(void){
@@ -48,6 +32,7 @@ void UART2_INIT(void){
 
     //RX interrupt Enable; for TX, register is UCTXIE
     UCA2IE |= UCRXIE;
+
 }
 
 
@@ -82,19 +67,19 @@ void uart_printf(uint32_t moduleInstance, char *fmt, ...){
 }
 
 //******************************************************************************
-//This is the EUSCIA0 interrupt vector service routine.
+//This is the EUSCIA2 interrupt vector service routine.
 //******************************************************************************
 void EUSCIA2_IRQHandler(void){
-    uint32_t status = MAP_UART_getEnabledInterruptStatus(EUSCI_A2_BASE);
-
-    MAP_UART_clearInterruptFlag(EUSCI_A2_BASE, status);
-
-    if(status & EUSCI_A_UART_TRANSMIT_INTERRUPT_FLAG){
-        UART_TX();
-    }
-
-    if(status & EUSCI_A_UART_RECEIVE_INTERRUPT_FLAG){
-        UART_TX();
+    switch (__even_in_range(UCA2IV,4)){
+        //Vector 2 - RXIFG
+        case 2: UART_RX();  break;
+        //Vector 4 - TXIFG
+        case 4: UART_TX();  break;
+        //Vector 6 - UCSTTIFG   --> Start bit received
+        case 6:  break;
+        //Vector 8 - UCTXCPTIFG --> Transmit complete
+        case 8:  break;
+        default: break;
     }
 }
 

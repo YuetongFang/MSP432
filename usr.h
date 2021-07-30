@@ -13,15 +13,11 @@
 #include "MSP432P4xx/driverlib.h"
 //#include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
-//for DMP_MPU6050
-#define MOTION_DRIVER_TARGET_MSP432
-#define MPU6050
 
 
-//for all the pin definitions and configurations
 #include "gpio_config.h"
 
-#define  size   16
+#define  size   12
 #include "oled.h"
 
 #include "delay.h"
@@ -32,6 +28,13 @@
 
 #include "uart_config.h"
 
+#include "flash_config.h"
 
+#include "timer_config.h"
+
+#include "mpu6050.h"
+#include "eMPL/inv_mpu.h"
+
+#include "adc_config.h"
 
 #endif /* USR_H_ */

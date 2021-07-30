@@ -1,7 +1,7 @@
 /*
  * gpio.h
  *
- *  Created on: 2021Ã„Ãª7Ã”Ã‚11ÃˆÃ•
+ *  Created on: 2021Äê7ÔÂ11ÈÕ
  *      Author: FYT
  *      for all the pin definitions and configurations
  */
@@ -17,6 +17,9 @@
  *
  *
  */
+
+
+
 
 
 
